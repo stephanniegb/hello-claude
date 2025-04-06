@@ -79,6 +79,21 @@ client.messages.create(
 )
 ```
 
+### 5. Streaming Chat (`stream.py`)
+
+```python
+# Real-time streaming chat with colored output
+stream = client.messages.create(
+    model="claude-3-haiku",
+    messages=conversation_history,
+    stream=True
+)
+
+for chunk in stream:
+    if chunk.type == "content_block_delta":
+        print(chunk.delta.text, end="", flush=True)
+```
+
 ## Try It Out!
 
 1. **Run the Basic Translator**
@@ -99,7 +114,13 @@ client.messages.create(
    python ChefBot.py
    ```
 
-4. **Generate Questions**
+4. **Try Real-time Chat**
+
+   ```bash
+   python stream.py
+   ```
+
+5. **Generate Questions**
    ```bash
    python curiosity_engine.py
    ```
@@ -110,6 +131,7 @@ client.messages.create(
 - **System Prompts**: Instructions that shape Claude's behavior
 - **Conversation History**: Maintaining context across interactions
 - **Models**: Different versions of Claude (we're using claude-3-sonnet)
+- **Streaming**: Real-time response generation for interactive applications
 
 ## Learn More
 
