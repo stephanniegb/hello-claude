@@ -94,6 +94,32 @@ for chunk in stream:
         print(chunk.delta.text, end="", flush=True)
 ```
 
+### 6. Vision Prompter (`vision.py`)
+
+```python
+# Process and analyze images with Claude
+client.messages.create(
+    model="claude-3-sonnet",
+    messages=[{
+        "role": "user",
+        "content": [
+            {
+                "type": "image",
+                "source": {
+                    "type": "base64",
+                    "media_type": "image/jpeg",
+                    "data": "base64_encoded_image"
+                }
+            },
+            {
+                "type": "text",
+                "text": "Describe this image."
+            }
+        ]
+    }]
+)
+```
+
 ## Try It Out!
 
 1. **Run the Basic Translator**
@@ -121,8 +147,14 @@ for chunk in stream:
    ```
 
 5. **Generate Questions**
+
    ```bash
    python curiosity_engine.py
+   ```
+
+6. **Analyze Images**
+   ```bash
+   python vision.py
    ```
 
 ## Key Concepts
