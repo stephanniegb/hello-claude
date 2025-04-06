@@ -19,7 +19,7 @@ Claude is Anthropic's AI assistant that can help with:
 
 ## Quick Start
 
-1. **Install Claude's SDK**
+1. **Install Claude's SDK and Python-dotenv**
 
    ```bash
    pip install anthropic python-dotenv
@@ -68,6 +68,17 @@ client.messages.create(
 )
 ```
 
+### 4. Question Generator (`curiosity_engine.py`)
+
+```python
+# Generates engaging questions about any topic
+client.messages.create(
+    model="claude-3-haiku",
+    system="You are an expert on the topic...",
+    messages=[{"role": "user", "content": "Generate questions..."}]
+)
+```
+
 ## Try It Out!
 
 1. **Run the Basic Translator**
@@ -83,8 +94,14 @@ client.messages.create(
    ```
 
 3. **Get Cooking Help**
+
    ```bash
    python ChefBot.py
+   ```
+
+4. **Generate Questions**
+   ```bash
+   python curiosity_engine.py
    ```
 
 ## Key Concepts

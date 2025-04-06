@@ -7,12 +7,12 @@ from anthropic import Anthropic
 load_dotenv()
 api_key = os.getenv("ANTHROPIC_API_KEY")
 
-# Create Claude client
+# Create Claude client with API key (SDK will use ANTHROPIC_API_KEY env var if not specified)
 client = Anthropic(api_key=api_key)
 
 # Simple example: Ask Claude to tell a joke
 response = client.messages.create(
-     model="claude-3-7-sonnet-20250219",  # Choose Claude model version
+     model="claude-3-haiku-20240307",  # Choose Claude model version (https://github.com/anthropics/courses/blob/master/anthropic_api_fundamentals/03_models.ipynb)
      max_tokens=100,                       # Limit response length
      messages=[
          {
